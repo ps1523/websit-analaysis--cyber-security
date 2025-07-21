@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #2e86de;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        a {
+            color: #2e86de;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛡️ Cyber Analyzer</h1>
+    <form method="post">
+        <input type="text" name="url" placeholder="Enter a website URL" required>
+        <input type="submit" value="Analyze">
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <p><strong>Domain:</strong> {{ result.domain }}</p>
+        <p><strong>Title:</strong> {{ result.title }}</p>
+        <p><strong>Description:</strong> {{ result.desc }}</p>
+        <p><strong>SSL Certificate:</strong> {{ result.ssl_ok }}</p>
+        <p><strong>Domain Age:</strong> {{ result.domain_age }}</p>
+        <p><strong>Score:</strong> {{ result.score }}</p>
+        <p><strong>Status:</strong> {{ result.status }}</p>
+        <p><a href="{{ result.url }}" target="_blank">🌐 Visit Website</a></p>
+    </div>
+    {% endif %}
+</body>
+</html>
